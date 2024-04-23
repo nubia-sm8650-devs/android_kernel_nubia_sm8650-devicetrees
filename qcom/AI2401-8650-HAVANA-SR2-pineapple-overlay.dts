@@ -1,0 +1,89 @@
+/dts-v1/;
+/plugin/;
+
+#include "AI2401-8650-MIAMI-ER1-pineapple-overlay.dts"
+
+/ {
+	model = "Qualcomm Technologies, Inc. ASUS AI2401 HAVANA SR2 - KERNEL";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <55 0>;
+};
+
+&qupv3_hub_i2c1 {
+	status = "disabled";
+};
+
+//ASUS BSP : AURA LGF +++
+&qupv3_se13_i2c {
+    status = "disabled";
+};
+//ASUS BSP : AURA LGF ---
+
+//Hall_sensor +++
+//use gpio87 for interrupt pin
+&soc {
+	hall1_sensor {
+		compatible = "qcom,hall";
+		pinctrl-names = "hall1_gpio_high","hall1_gpio_low";
+		pinctrl-0 = <&gpio_hall1_active>;
+		pinctrl-1 = <&gpio_hall1_suspend>;
+		qcom,hall1-gpio = <&tlmm 87 0x0>;
+	};
+};
+
+&tlmm{
+	hall_int_pin {
+		gpio_hall1_active: gpio_hall1_active {
+			mux {
+				pins = "gpio87";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio87";
+				drive-strength = <2>;
+				bias-pull-up;
+				input-enable;
+			};
+		};
+
+		gpio_hall1_suspend: gpio_hall1_suspend {
+			mux {
+				pins = "gpio87";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio87";
+				drive-strength = <2>;
+				bias-pull-down;
+				input-enable;
+			};
+		};
+	};
+};
+//Hall_sensor ---
+
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x3 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x3 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x4 0x57>;
+	qcom,param-override-seq-host =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xc 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x5 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x1 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x6 0x57>;
+};

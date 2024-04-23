@@ -1,0 +1,97 @@
+/dts-v1/;
+/plugin/;
+
+#include "pineapple-mtp.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Pineapple MTP";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <8 0>;
+};
+
+/*   ====================================
+*    overlay for ALS/PS - start
+*    ====================================
+*/
+&qupv3_se6_i2c {
+        status = "ok";
+        /*
+        stk_ps@48 {
+            compatible = "stk,stk3a9x";
+            reg = <0x48>;
+            clocks = <&clock_gcc clk_ln_bb_clk3_pin>;
+            clock-names = "ref_clk";                
+            stk,irq-gpio = <&tlmm 16 IRQ_TYPE_EDGE_FALLING>;
+            stk,als_scale = <1000>;
+            //stk,als_is_dri;
+            stk,ps_thd_h = <1000>;
+            stk,ps_thd_l = <900>;
+            stk,ps_ctir = <0>;
+            stk,ps_is_dri;
+        };
+        */
+        
+        stk_ps@48 {
+               compatible = "stk,stk3a9x";
+               reg = <0x48>;
+               stk,irq-gpio = <&tlmm 16 0x0>;
+               vcc_psensor-supply = <&L2B>;
+               vcc_psensor_1v8-supply  = <&L1B>;
+        };
+};
+
+&apps_rsc_drv2 {
+	rpmh-regulator-ldob2 {
+		L2B: pm_humu_l2: regulator-pm-humu-l2 {
+			regulator-min-microvolt = <3008000>;
+			regulator-max-microvolt = <3300000>;
+			qcom,init-voltage = <3300000>;
+		};
+	};
+};
+
+/*   ====================================
+*    overlay for ALS/PS - end
+*    ====================================
+*/
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "ok";
+
+	synaptics-tcm-spi-r0@0 {
+		compatible = "synaptics,tcm-spi";
+		reg = <0>;
+		//pinctrl-names = "spi_attn";
+		//pinctrl-0 = <&syna_spi_attn_pins>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <162 0x2008>;  /* IRQF_ONESHOT | IRQF_TRIGGER_LOW */
+		synaptics,irq-gpio = <&tlmm 162 0x2008>;
+		synaptics,irq-on-state = <0>;
+
+		synaptics,power-supply = <0>; /* 0: REGULATOR , 1: PWR_GPIO , 2: PWR MODULES */
+		//synaptics,vdd-gpio = <&gpio 18 0x0000>;
+		//synaptics,avdd-gpio = <&gpio 19 0x0000>;
+		synaptics,vdd-name = <&L14B>;
+		synaptics,avdd-name= <&L4B>;
+		synaptics,power-delay-ms = <50>;
+		synaptics,power-on-state = <1>;
+
+		synaptics,reset-gpio = <&tlmm 161 0x0000>;
+		synaptics,reset-on-state = <0>;
+		synaptics,reset-active-ms = <20>;
+		synaptics,reset-delay-ms = <200>;
+
+		//synaptics,io-switch-gpio = <&gpio 5 0x0000>;
+		//synaptics,io-switch = <0>;
+
+		spi-max-frequency = <10000000>;
+		synaptics,spi-mode = <0>;
+		synaptics,spi-byte-delay-us = <0>;
+		synaptics,spi-block-delay-us = <0>;
+	};
+};
+

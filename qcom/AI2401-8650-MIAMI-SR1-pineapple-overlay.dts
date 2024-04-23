@@ -1,0 +1,122 @@
+/dts-v1/;
+/plugin/;
+
+#include "AI2401-8650-MIAMI-EVB-pineapple-overlay.dts"
+
+/ {
+	model = "Qualcomm Technologies, Inc. ASUS AI2401 MIAMI SR1 - KERNEL";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <40 0>;
+};
+
+//ASUS_BSP : Add for charger +++
+&pm8550_gpios {
+	pinctrl-0 = <&pm8550_side_con_defualt>;
+	pinctrl-names = "default";
+	pm8550_side_con {
+		pm8550_side_con_defualt: pm8550_side_con_defualt {
+			pins = "gpio2";
+			function = "func1";
+			input-enable;
+			bias-disable;
+		};
+	};
+};
+&battery_charger {
+	io-channels = <&pmk8550_vadc PM8550_ADC5_GEN3_AMUX_THM6_GPIO2_100K_PU>,
+			 <&pmk8550_vadc PM8550B_ADC5_GEN3_AMUX_THM4_USB_THERM_100K_PU>;
+	io-channel-names ="side_usb_temp_iio_chan", "btm_usb_temp_iio_chan";
+};
+//ASUS_BSP : Add for charger ---
+
+//ASUS BSP ACCY +++
+&pm8550_gpios {
+	inbox_det {
+		inbox_det_default: inbox_det_default {
+			pins = "gpio1";
+			function = "normal";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <0>; /* 1.8 V */
+		};
+	};
+};
+
+&soc {
+	rog_accy {
+		compatible = "asus:rog_accy";
+		status = "okay";
+
+		depends-on-supply = <&tlmm>;
+
+		accy,vph_ctrl = <&pm8550_gpios 1 0x0>;
+		accy,vph_ocp  = <&tlmm 85 0x0>;
+		accy,type = "primary";
+
+		pinctrl-names = "vph_default";
+		pinctrl-0 = <&vph_ocp_default>;
+	};
+};
+
+&tlmm {
+	vph_ocp {
+		vph_ocp_default: vph_ocp_default {
+			    mux {
+					pins = "gpio85";
+					function = "gpio";
+			    };
+			    config {
+					pins = "gpio85";
+					drive-strength = <6>;
+					bias-pull-up;
+					input-enable;
+			    };
+		};
+	};
+};
+//ASUS BSP ACCY ---
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "ok";
+
+	synaptics-tcm-spi-r0@0 {
+		compatible = "synaptics,tcm-spi";
+		reg = <0>;
+		//pinctrl-names = "spi_attn";
+		//pinctrl-0 = <&syna_spi_attn_pins>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <162 0x2008>;  /* IRQF_ONESHOT | IRQF_TRIGGER_LOW */
+		synaptics,irq-gpio = <&tlmm 162 0x2008>;
+		synaptics,irq-on-state = <0>;
+
+		synaptics,power-supply = <0>; /* 0: REGULATOR , 1: PWR_GPIO , 2: PWR MODULES */
+		//synaptics,vdd-gpio = <&gpio 18 0x0000>;
+		//synaptics,avdd-gpio = <&gpio 19 0x0000>;
+
+		vdd-supply = <&L14B>;
+		avdd-supply = <&L4B>;
+		synaptics,power-delay-ms = <50>;
+		synaptics,power-on-state = <1>;
+
+		synaptics,reset-gpio = <&tlmm 161 0x0000>;
+		synaptics,reset-on-state = <0>;
+		synaptics,reset-active-ms = <20>;
+		synaptics,reset-delay-ms = <200>;
+
+		//synaptics,io-switch-gpio = <&gpio 5 0x0000>;
+		//synaptics,io-switch = <0>;
+
+		spi-max-frequency = <10000000>;
+		synaptics,spi-mode = <0>;
+		synaptics,spi-byte-delay-us = <0>;
+		synaptics,spi-block-delay-us = <0>;
+	};
+};

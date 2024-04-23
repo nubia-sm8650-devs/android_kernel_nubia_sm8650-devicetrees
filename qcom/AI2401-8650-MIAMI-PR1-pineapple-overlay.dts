@@ -1,0 +1,54 @@
+/dts-v1/;
+/plugin/;
+
+#include "AI2401-8650-MIAMI-ER2-pineapple-overlay.dts"
+
+/ {
+	model = "Qualcomm Technologies, Inc. ASUS AI2401 MIAMI PR1 - KERNEL";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <60 0>, <63 0>;
+};
+
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xc 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x5 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x3 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x5 0x57>;
+	qcom,param-override-seq-host =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xc 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x5 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x1 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x6 0x57>;
+	qcom,param-override-seq-BTM =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xf 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x7 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x3 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x6 0x57>;
+	qcom,param-override-seq-BTM-host =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xf 0x51
+		/* Disconnect Threshold - EUSB2_TUNE_HSDISC */
+		 0x7 0x53
+		/* EUSB2_TUNE_USB2_SLEW */
+		 0x1 0x55
+		/* EUSB2_TUNE_USB2_PREEM */
+		 0x6 0x57>;
+};

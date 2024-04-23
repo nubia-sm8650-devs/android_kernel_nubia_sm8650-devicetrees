@@ -1,0 +1,11 @@
+/dts-v1/;
+/plugin/;
+
+#include "AI2401-8650-MIAMI-PR1-pineapple-overlay.dts"
+
+/ {
+	model = "Qualcomm Technologies, Inc. ASUS AI2401 MIAMI PR2 - KERNEL";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <61 0>, <64 0>;
+};

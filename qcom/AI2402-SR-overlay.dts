@@ -1,0 +1,53 @@
+/dts-v1/;
+/plugin/;
+
+#include "AI2402-EVB-overlay.dts"
+
+/ {
+	model = "Qualcomm Technologies, Inc.  ASUS AI2402 8650 KERNEL SR ";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
+	qcom,board-id = <48 0>;
+};
+
+/*   ====================================
+*    overlay for touch - start
+*    ====================================
+*/
+&qupv3_se4_i2c {
+	status = "disable";
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "disable";
+	};
+
+	st_fts@0 {
+		compatible = "st,fts";
+		reg = <0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <162 0x2008>;
+		st,reset-gpio = <&tlmm 161 0x00>;
+		st,irq-gpio = <&tlmm 162 0x2008>;
+
+		st,regulator_dvdd = "vdd";
+		st,regulator_avdd = "avdd";
+		vdd-supply = <&L14B>;
+		avdd-supply = <&L4B>;
+
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+	};
+};
+/*   ====================================
+*    overlay for touch - end
+*    ====================================
+*/
+
+
