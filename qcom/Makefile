@@ -17,21 +17,6 @@ PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb
 
 PINEAPPLE_BOARDS += \
-		 AI2401-8650-MIAMI-EVB-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-SR1-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-SR2-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-ER1-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-ER2-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-PR1-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-PR2-pineapple-overlay.dtbo \
-		 AI2401-8650-MIAMI-MP-pineapple-overlay.dtbo \
-		 AI2401-8650-HAVANA-SR1-pineapple-overlay.dtbo \
-		 AI2401-8650-HAVANA-SR2-pineapple-overlay.dtbo \
-		 AI2401-8650-HAVANA-ER-pineapple-overlay.dtbo \
-		 AI2401-8650-HAVANA-PR-pineapple-overlay.dtbo \
-		 AI2401-8650-HAVANA-MP-pineapple-overlay.dtbo \
-                 AI2402-EVB-overlay.dtbo \
-                 AI2402-SR-overlay.dtbo \
 		 pineapple-mtp-overlay.dtbo \
 		 pineapple-mtp-nfc-overlay.dtbo \
 		 pineapple-cdp-overlay.dtbo \

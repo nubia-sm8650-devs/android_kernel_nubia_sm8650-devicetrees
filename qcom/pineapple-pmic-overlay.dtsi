@@ -31,19 +31,6 @@
 	};
 };
 
-&pm8550b_gpios {
-	aura_vdd_en {
-		aura_vdd_en_default: aura_vdd_en_default {
-			pins = "gpio9";
-			function = "normal";
-			input-disable;
-			output-enable;
-			power-source = <1>; /* 1.8V */
-			qcom,drive-strength = <2>;
-		};
-	};
-};
-
 &pm8550_tz {
 	io-channels = <&pmk8550_vadc PM8550_ADC5_GEN3_DIE_TEMP>;
 	io-channel-names = "thermal";

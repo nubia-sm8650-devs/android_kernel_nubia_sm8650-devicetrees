@@ -3552,12 +3552,6 @@
 		pmsg-size = <0x200000>;
 		mem-type = <2>;
 	};
-
-	asus_debug_mem: asus_debug_resion@0{
-		compatible = "removed-dma-poll";
-		no-map;
-		reg = <0x0 0xB8000000 0x0 0x00400000>;
-	};
 };
 
 #include "ipcc-test.dtsi"
