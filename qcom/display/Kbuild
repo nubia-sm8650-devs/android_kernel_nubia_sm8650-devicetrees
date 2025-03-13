@@ -36,11 +36,11 @@ dtbo-$(CONFIG_ARCH_KALAMA) += display/kalama-sde.dtbo \
 		display/kalama-sde-display-atp-overlay.dtbo
 
 #PLUS_DTS_OVERLAY start
-dtbo-y += oplus/waffle-22825-display-pineapple-overlay.dtbo
-dtbo-y += oplus/audi-23803-display-cliffs-overlay.dtbo
-dtbo-y += oplus/caihong-23926-display-pineapple-overlay.dtbo
-dtbo-y += oplus/corvette-23814-display-pineapple-overlay.dtbo
-dtbo-y += oplus/giulia-23851-display-pineapple-overlay.dtbo
+dtbo-$(CONFIG_WAFFLE_DTB) += oplus/waffle-22825-display-pineapple-overlay.dtbo
+dtbo-$(CONFIG_AUDI_DTB) += oplus/audi-23803-display-cliffs-overlay.dtbo
+dtbo-$(CONFIG_CAIHONG_DTB) += oplus/caihong-23926-display-pineapple-overlay.dtbo
+dtbo-$(CONFIG_CORVETTE_DTB) += oplus/corvette-23814-display-pineapple-overlay.dtbo
+dtbo-$(CONFIG_GIULIA_DTB) += oplus/giulia-23851-display-pineapple-overlay.dtbo
 #PLUS_DTS_OVERLAY end
 else
 dtbo-$(CONFIG_ARCH_KALAMA) += display/trustedvm-kalama-sde-display-mtp-overlay.dtbo \

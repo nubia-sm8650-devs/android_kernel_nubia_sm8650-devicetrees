@@ -46,12 +46,12 @@ dtbo-y += \
                  cliffs7-audio-atp.dtbo
 endif
 #OPLUS_DTS_OVERLAY start
-dtbo-y += oplus/waffle-22825-audio-pineapple-overlay.dtbo
-dtbo-y += oplus/audi-23803-audio-cliffs-overlay.dtbo
-dtbo-y += oplus/corvette-23814-audio-pineapple-overlay.dtbo
-dtbo-y += oplus/caihong-23926-audio-pineapple-overlay.dtbo
-dtbo-y += oplus/avalon-24211-audio-cliffs-overlay.dtbo
-dtbo-y += oplus/giulia-23851-audio-pineapple-overlay.dtbo
+dtbo-$(CONFIG_WAFFLE_DTB) += oplus/waffle-22825-audio-pineapple-overlay.dtbo
+dtbo-$(CONFIG_AUDI_DTB) += oplus/audi-23803-audio-cliffs-overlay.dtbo
+dtbo-$(CONFIG_CORVETTE_DTB) += oplus/corvette-23814-audio-pineapple-overlay.dtbo
+dtbo-$(CONFIG_CAIHONG_DTB) += oplus/caihong-23926-audio-pineapple-overlay.dtbo
+dtbo-$(CONFIG_AVALON_DTB) += oplus/avalon-24211-audio-cliffs-overlay.dtbo
+dtbo-$(CONFIG_GIULIA_DTB) += oplus/giulia-23851-audio-pineapple-overlay.dtbo
 #OPLUS_DTS_OVERLAY end
 endif
 
