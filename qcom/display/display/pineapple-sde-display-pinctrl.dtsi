@@ -25,32 +25,6 @@
 				bias-pull-down;         /* PULL DOWN */
 			};
 		};
-
-		sde_dsi1_active: sde_dsi1_active {
-			mux {
-				pins = "gpio137";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio137";
-				drive-strength = <8>;   /* 8 mA */
-				bias-disable = <0>;   /* no pull */
-			};
-		};
-
-		sde_dsi1_suspend: sde_dsi1_suspend {
-			mux {
-				pins = "gpio137";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio137";
-				drive-strength = <2>;   /* 2 mA */
-				bias-pull-down;         /* PULL DOWN */
-			};
-		};
 	};
 
 	pmx_sde_te: pmx_sde_te {
@@ -75,6 +49,32 @@
 
 			config {
 				pins = "gpio86";
+				drive-strength = <2>;   /* 2 mA */
+				bias-pull-down;         /* PULL DOWN */
+			};
+		};
+
+		sde_dynamic_te_active: sde_dynamic_te_active {
+			mux {
+				pins = "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85";
+				drive-strength = <2>;   /* 2 mA */
+				bias-pull-down;         /* PULL DOWN */
+			};
+		};
+
+		sde_dynamic_te_suspend: sde_dynamic_te_suspend {
+			mux {
+				pins = "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85";
 				drive-strength = <2>;   /* 2 mA */
 				bias-pull-down;         /* PULL DOWN */
 			};
