@@ -13,7 +13,7 @@
 			pins = "gpio113";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -42,7 +42,7 @@
 			pins = "gpio114";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -71,7 +71,7 @@
 			pins = "gpio115";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -100,7 +100,7 @@
 			pins = "gpio116";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -129,7 +129,7 @@
 			pins = "gpio117";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -158,7 +158,7 @@
 			pins = "gpio118";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -186,7 +186,7 @@
 			pins = "gpio12";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -213,7 +213,7 @@
 			pins = "gpio13";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -241,7 +241,7 @@
 			pins = "gpio112";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -270,7 +270,7 @@
 			pins = "gpio153";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -299,7 +299,7 @@
 			pins = "gpio119";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -328,7 +328,7 @@
 			pins = "gpio120";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -847,6 +847,33 @@
 			qcom,remote;
 		};
 	};
+
+	qupv3_hub_i2c4_sda_active: qupv3_hub_i2c4_sda_active {
+		mux {
+			pins = "gpio72";
+			function = "i2chub0_se4_l0";
+		};
+
+		config {
+			pins = "gpio72";
+			drive-strength = <2>;
+			//bias-pull-up;
+		};
+	};
+
+	qupv3_hub_i2c4_scl_active: qupv3_hub_i2c4_scl_active {
+		mux {
+			pins = "gpio73";
+			function = "i2chub0_se4_l1";
+		};
+
+		config {
+			pins = "gpio73";
+			drive-strength = <2>;
+			//bias-pull-up;
+		};
+	};
+
 };
 
 &soc {
@@ -3303,7 +3330,7 @@
 
 	cam_bps: qcom,bps@ac2c000 {
 		cell-index = <0>;
-		compatible = "qcom,cam-bps680";
+		compatible = "qcom,cam-bps880";
 		reg = <0xac2c000 0xb000>;
 		reg-names = "bps_top";
 		reg-cam-base = <0x2c000>;

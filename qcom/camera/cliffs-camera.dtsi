@@ -13,7 +13,7 @@
 			pins = "gpio70";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -42,7 +42,7 @@
 			pins = "gpio71";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -71,7 +71,7 @@
 			pins = "gpio72";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -100,7 +100,7 @@
 			pins = "gpio73";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -129,7 +129,7 @@
 			pins = "gpio74";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -158,7 +158,7 @@
 			pins = "gpio75";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -186,7 +186,7 @@
 			pins = "gpio20";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -213,7 +213,7 @@
 			pins = "gpio21";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
+			//qcom,i2c_pull;
 		};
 	};
 
@@ -1346,6 +1346,7 @@
 			"tpg13", "tpg14", "tpg15";
 		sys-cache-names = "small-1", "large-1";
 		sys-cache-uids = <34 38>;
+		enable-secure-qos-update;
 		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
 		rt-wr-priority-max = <5>;
@@ -2750,7 +2751,7 @@
 
 	cam_bps: qcom,bps@ac2c000 {
 		cell-index = <0>;
-		compatible = "qcom,cam-bps680";
+		compatible = "qcom,cam-bps880";
 		reg = <0xac2c000 0xb000>;
 		reg-names = "bps_top";
 		reg-cam-base = <0x2c000>;
