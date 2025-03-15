@@ -30,9 +30,7 @@
 
 			qcom,bt-vdd18-aon-supply  = <&L15B>; /* BT VDD1.8 AON */
 			qcom,bt-vdd12-io-supply   = <&L3C>;  /* BT VDD1.2V IO */
-//#ifndef OPLUS_BUG_STABILITY
-			//qcom,bt-ant-ldo-supply    = <&L6K>;  /* BT ANT */
-//#endif /* OPLUS_BUG_STABILITY */
+			//qcom,bt-ant-ldo-supply    = <&L3K>;  /* BT ANT */
 			qcom,bt-vdd-dig-supply    = <&S3C>;  /* BT LDO*/
 			qcom,bt-vdd-aon-supply    = <&S3C>;  /* BT AON LDO*/
 			qcom,bt-vdd-rfaOp8-supply = <&S3C>;  /* BT RFAOp8 CMN LDO*/
@@ -41,7 +39,7 @@
 
 			qcom,bt-vdd18-aon-config  = <1800000 1800000 0 1>;
 			qcom,bt-vdd12-io-config   = <1200000 1200000 0 1>;
-			qcom,bt-ant-ldo-config    = <1800000 1800000 0 1>;
+			//qcom,bt-ant-ldo-config    = <1200000 1200000 0 1>;
 			qcom,bt-vdd-aon-config    = <916000 916000 0 1>;
 			qcom,bt-vdd-dig-config    = <916000 916000 0 1>;
 			qcom,bt-vdd-rfaOp8-config = <916000 916000 0 1>;
@@ -73,23 +71,6 @@
 	};
 };
 
-// FM changes
-&qupv3_se6_i2c {
-    status = "ok";
-	fm_rtc6226: nq@64 {
-		compatible = "rtc6226";
-		reg = <0x64>;
-//#ifdef OPLUS_BUG_COMPATIBILITY
-//remove fm gpio config
-		//fmint-gpio = <&tlmm 85 0>;
-//#endif /* OPLUS_BUG_COMPATIBILITY */
-		vdd-supply = <&L16B>;
-		rtc6226,vdd-supply-voltage = <2800000 2800000>;
-		rtc6226,vdd-load = <15000>;
-		vio-supply = <&L15B>;
-		rtc6226,vio-supply-voltage = <1800000 1800000>;
-	};
-};
 
 //uart instance
 &qupv3_se14_4uart {

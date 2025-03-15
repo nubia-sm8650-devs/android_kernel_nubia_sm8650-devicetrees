@@ -3,8 +3,13 @@ dtbo-y += kalama-bt.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE),y)
+ifeq ($(OPLUS_WIFI_ONLY),true)
+dtbo-y += oplus/caihong-23926-bt-pineapple-overlay.dtbo
+else
 dtbo-y += pineapple-kiwi-bt.dtbo
+endif
 dtbo-y += pineapple-hdk-kiwi-bt.dtbo
+dtbo-y += pineapple-aim500-kiwi-bt.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_WAIPIO),y)
