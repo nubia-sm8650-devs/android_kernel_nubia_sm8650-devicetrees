@@ -655,6 +655,7 @@
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&wcd_reset_active>;
 		pinctrl-1 = <&wcd_reset_sleep>;
+		qcom,lpi-gpios;
 	};
 
 	clock_audio_va_1: va_core_clk {

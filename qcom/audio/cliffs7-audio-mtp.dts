@@ -6,5 +6,5 @@
 	model = "Qualcomm Technologies, Inc. Cliffs MTP";
 	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp";
 	qcom,msm-id = <632 0x10000>, <643 0x10000>;
-	qcom,board-id = <8 0>;
+	qcom,board-id = <8 0>, <8 2>, <8 3>;
 };

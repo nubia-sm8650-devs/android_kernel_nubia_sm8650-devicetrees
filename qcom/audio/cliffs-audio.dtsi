@@ -162,3 +162,8 @@
 	swr2 = "/soc/spf_core_platform/lpass-cdc/va-macro@6D44000/va_swr_master";
 };
 
+//#ifdef OPLUS_ARCH_EXTENDS
+&pineapple_snd {
+	/delete-property/ wcd939x-i2c-handle;
+};
+//#endif /* OPLUS_ARCH_EXTENDS */
