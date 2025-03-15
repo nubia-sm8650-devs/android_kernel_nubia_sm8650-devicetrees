@@ -54,7 +54,11 @@ dtbo-y += sdxpinn-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE),y)
+ifeq ($(OPLUS_WIFI_ONLY),true)
+dtbo-y += oplus/caihong-23926-wlan-pineapple-overlay.dtbo
+else
 dtbo-y += pineapple-kiwi-cnss.dtbo
+endif
 dtbo-y += pineapplep-hdk-kiwi-cnss.dtbo
 dtbo-y += pineapplep-aim500-kiwi-cnss.dtbo
 endif
@@ -68,6 +72,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_CLIFFS),y)
 dtbo-y += cliffs-kiwi-cnss.dtbo
+dtbo-y += cliffs-peach-cnss.dtbo
 dtbo-y += cliffs-qca6750.dtbo
 endif
 

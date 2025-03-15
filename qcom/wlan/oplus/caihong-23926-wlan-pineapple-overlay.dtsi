@@ -68,7 +68,7 @@
 		/* For AOP communication, use direct QMP instead of mailbox */
 		qcom,qmp = <&aoss_qmp>;
 		//#ifdef OPLUS_FEATURE_WIFI_MAC
-		use-nv-mac;
+		//use-nv-mac;
 		//#endif /* OPLUS_FEATURE_WIFI_MAC */
 		vdd-wlan-io-supply = <&L15B>;
 		qcom,vdd-wlan-io-config = <1800000 1800000 0 0 1>;
@@ -84,10 +84,9 @@
 		qcom,vdd-wlan-rfa1-config = <1864000 1864000 0 0 1>;
 		vdd-wlan-rfa2-supply = <&S1C>;
 		qcom,vdd-wlan-rfa2-config = <1316000 1316000 0 0 1>;
-		//#ifdef OPLUS_FEATURE_WIFI_POWER
-		//vdd-wlan-ant-share-supply = <&L6K>;
-		//qcom,vdd-wlan-ant-share-config = <1800000 1800000 0 0 1>;
-		//#endif OPLUS_FEATURE_WIFI_POWER
+		//vdd-wlan-ant-share-supply = <&L3K>;
+		//qcom,vdd-wlan-ant-share-config = <1200000 1200000 0 0 1>;
+
 		interconnects =
 		<&pcie_noc MASTER_PCIE_0 &pcie_noc SLAVE_ANOC_PCIE_GEM_NOC>,
 		<&gem_noc MASTER_ANOC_PCIE_GEM_NOC &mc_virt SLAVE_EBI1>;
