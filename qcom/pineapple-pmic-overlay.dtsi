@@ -160,9 +160,6 @@
 };
 
 &pmk8550_gpios {
-	pinctrl-0 = <&alt_sleep_clk_default>;
-	pinctrl-names = "default";
-
 	alt_sleep_clk {
 		alt_sleep_clk_default: alt_sleep_clk_default {
 			pins = "gpio3";
@@ -170,7 +167,7 @@
 			input-disable;
 			output-enable;
 			bias-disable;
-			power-source = <0>;
+			power-source = <1>;
 		};
 	};
 };
@@ -404,15 +401,17 @@
 		nvmem-cell-names = "restart_reason";
 	};
 
-	DBO3: regulator-dbo3 {
-		compatible = "qti-regulator-fixed";
-		regulator-name = "dbo3";
-		regulator-min-microvolt = <3600000>;
-		regulator-max-microvolt = <3600000>;
-		gpio = <&pm8550_gpios 9 GPIO_ACTIVE_HIGH>;
-		regulator-enable-ramp-delay = <1500>;
-		enable-active-high;
-	};
+//#ifndef OPLUS_FEATURE_ESIM
+//	DBO3: regulator-dbo3 {
+//		compatible = "qti-regulator-fixed";
+//		regulator-name = "dbo3";
+//		regulator-min-microvolt = <3600000>;
+//		regulator-max-microvolt = <3600000>;
+//		gpio = <&pm8550_gpios 9 GPIO_ACTIVE_HIGH>;
+//		regulator-enable-ramp-delay = <1500>;
+//		enable-active-high;
+//	};
+//#endif /*OPLUS_FEATURE_ESIM*/
 
 	pmic-pon-log {
 		compatible = "qcom,pmic-pon-log";

@@ -5,10 +5,7 @@
 #include "pineapple-thermal-overlay.dtsi"
 
 &sdhc_2 {
-	status = "ok";
-	vdd-supply = <&pm_humu_l9>;
-	qcom,vdd-voltage-level = <2950000 2960000>;
-	qcom,vdd-current-level = <0 800000>;
+	status = "disabled";
 
 	vdd-io-supply = <&pm_humu_l8>;
 	qcom,vdd-io-voltage-level = <1800000 2960000>;
@@ -39,7 +36,7 @@
 			label = "volume_up";
 			gpios = <&pm8550_gpios 6 GPIO_ACTIVE_LOW>;
 			linux,input-type = <1>;
-			linux,code = <KEY_VOLUMEUP>;
+			linux,code = <KEY_VOLUMEDOWN>;
 			gpio-key,wakeup;
 			debounce-interval = <15>;
 			linux,can-disable;
@@ -88,6 +85,9 @@
 
 	qcom,vccq-parent-supply = <&pm_v6c_s1>;
 	qcom,vccq-parent-max-microamp = <210000>;
+
+	qcom,vccq-shutdown-supply = <&pm_v6c_l1>;
+	qcom,vccq-shutdown-max-microamp = <1200000>;
 
 	reset-gpios = <&tlmm 210 GPIO_ACTIVE_LOW>;
 	resets = <&gcc GCC_UFS_PHY_BCR>;

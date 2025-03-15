@@ -36,6 +36,7 @@
 				pins = "gpio30", "gpio31";
 				drive-strength = <2>;
 				bias-pull-down;
+				output-low;
 			};
 		};
 	};
@@ -108,19 +109,6 @@
 	};
 
 	pcie1 {
-		pcie1_perst_default: pcie1_perst_default {
-			mux {
-				pins = "gpio97";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio97";
-				drive-strength = <2>;
-				bias-pull-down;
-			};
-		};
-
 		pcie1_clkreq_default: pcie1_clkreq_default {
 			mux {
 				pins = "gpio98";
@@ -1858,14 +1846,22 @@
 
 		qupv3_se11_spi_sleep: qupv3_se11_spi_sleep {
 			mux {
+				/*#ifdef OPLUS_FEATURE_SENSOR_IR */
+				/*
 				pins = "gpio12", "gpio13",
 					"gpio14", "gpio15";
+				*/
+				pins = "gpio13";
 				function = "gpio";
 			};
 
 			config {
+                                /*#ifdef OPLUS_FEATURE_SENSOR_IR */
+                                /*
 				pins = "gpio12", "gpio13",
 					"gpio14", "gpio15";
+                                */
+				pins = "gpio13";
 				drive-strength = <2>;
 				bias-disable;
 			};
@@ -2164,6 +2160,34 @@
 	};
 
 	qupv3_se13_q2spi_pins: qupv3_se13_q2spi_pins {
+		qupv3_se13_q2spi_default: qupv3_se13_q2spi_default {
+			mux {
+				pins = "gpio21", "gpio22",
+					"gpio23";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio21", "gpio22",
+					"gpio23";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+
+		qupv3_se13_q2spi_miso_default: qupv3_se13_q2spi_miso_default {
+			mux {
+				pins = "gpio20";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio20";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
 		qupv3_se13_q2spi_miso_active: qupv3_se13_q2spi_miso_active {
 			mux {
 				pins = "gpio20";
@@ -2203,7 +2227,7 @@
 			};
 		};
 
-		qupv3_se13_q2spi_doorbell_active: qupv3_se13_q2spi_cs_active {
+		qupv3_se13_q2spi_doorbell_active: qupv3_se13_q2spi_doorbell_active {
 			mux {
 				pins = "gpio23";
 				function = "qup2_se5_l6";
@@ -2216,16 +2240,14 @@
 			};
 		};
 
-		qupv3_se13_q2spi_sleep: qupv3_se13_q2spi_sleep {
+		qupv3_se13_q2spi_doorbell_sleep: qupv3_se13_q2spi_doorbell_sleep {
 			mux {
-				pins = "gpio21", "gpio22",
-					"gpio23";
+				pins = "gpio23";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio21", "gpio22",
-					"gpio23";
+				pins = "gpio23";
 				drive-strength = <2>;
 				bias-pull-down;
 			};
@@ -2600,6 +2622,7 @@
 				pins = "gpio206";
 				drive-strength = <2>;
 				bias-pull-up;
+				qcom,apps;
 			};
 		};
 
@@ -2613,6 +2636,7 @@
 				pins = "gpio207";
 				drive-strength = <2>;
 				bias-pull-up;
+				qcom,apps;
 			};
 		};
 
@@ -2625,6 +2649,7 @@
 			config {
 				pins = "gpio206", "gpio207";
 				drive-strength = <2>;
+				qcom,remote;
 			};
 		};
 	};
@@ -3564,6 +3589,21 @@
 			config {
 				pins = "gpio161", "gpio162";
 				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+
+	qps615_intn_wol {
+		qca_intn_wol_sig: qca_intn_wol_sig {
+			mux {
+				pins = "gpio23";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio23";
+				input-enable;
 				bias-disable;
 			};
 		};

@@ -27,11 +27,19 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "loglevel=6 kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat irqaffinity=0-2 cpufreq.default_governor=performance sysctl.kernel.sched_pelt_multiplier=4 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on kernel.panic_on_rcu_stall=1 fw_devlink.strict=1 service_locator.enable=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 no-steal-acc printk.console_no_auto_verbose=1 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware_mnt/image/kiwi,/vendor/vm-system/oemvm/boot,/vendor/vm-system/trustedvm/boot,/vendor/firmware,/vendor/firmware/wlan/qca_cld/kiwi_v2 pci-msm-drv.pcie_sm_regs=0x1D07000,0x1040,0x1048,0x3000,0x1";
+		bootargs = "loglevel=6 kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat irqaffinity=0-2 cpufreq.default_governor=performance kasan=off cgroup_disable=pressure cgroup.memory=nokmem,nosocket disable_dma32=on kernel.panic_on_rcu_stall=1 fw_devlink.strict=1 service_locator.enable=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 no-steal-acc printk.console_no_auto_verbose=1 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware_mnt/image/kiwi,/vendor/vm-system/oemvm/boot,/vendor/vm-system/trustedvm/boot,/vendor/firmware,/vendor/firmware/wlan/qca_cld/kiwi_v2";
 		stdout-path = "/soc/qcom,qupv3_0_geni_se@ac0000/qcom,qup_uart@a94000:115200n8";
 	};
 
 	reserved_memory: reserved-memory {};
+
+	mem-offline {
+		compatible = "qcom,mem-offline";
+		offline-sizes = <0x2 0xc0000000 0x1 0x0>;
+		granule = <512>;
+		mboxes = <&qmp_aop 0>;
+		status = "disabled";
+	};
 
 	ddr-regions { };
 
@@ -862,11 +870,6 @@
 			reg = <0x10 0x8>;
 		};
 
-		restart_reason@65c {
-			compatible = "qcom,msm-imem-restart_reason";
-			reg = <0x65c 0x4>;
-		};
-
 		dload_type@1c {
 			compatible = "qcom,msm-imem-dload-type";
 			reg = <0x1c 0x4>;
@@ -1108,6 +1111,33 @@
 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "qcom,qtmr-intr";
 		qcom,primary;
+	};
+
+	qcom,memshare {
+		compatible = "qcom,memshare";
+
+		qcom,client_1 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x0>;
+			qcom,client-id = <0>;
+			qcom,allocate-boot-time;
+			label = "modem";
+		};
+
+		qcom,client_2 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x0>;
+			qcom,client-id = <2>;
+			label = "modem";
+		};
+
+		qcom,client_3 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x500000>;
+			qcom,client-id = <1>;
+			qcom,allocate-on-request;
+			label = "modem";
+		};
 	};
 
 	clocks {
@@ -1514,6 +1544,10 @@
 
 	qcom_cpufreq_stats: qcom,cpufreq_stats {
 		compatible = "qcom,cpufreq-stats-v2";
+	};
+
+	qcom_mpam: qcom,mpam {
+		compatible = "qcom,mpam";
 	};
 
 	qcom_dynpf: qcom,dynpf {
@@ -2164,6 +2198,9 @@
 		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
+
 		interconnects = <&aggre1_noc MASTER_SDCC_2 &mc_virt SLAVE_EBI1>,
 			      <&gem_noc MASTER_APPSS_PROC &cnoc_cfg
 			      SLAVE_SDCC_2>;
@@ -2238,7 +2275,6 @@
 
 		qcom,prime-mask = <0x80>;
 		qcom,silver-mask = <0x07>;
-		qcom,esi-affinity-mask = <0xf8>;
 
 		lanes-per-direction = <2>;
 		clock-names =
@@ -3274,3 +3310,26 @@
 };
 
 #include "cliffs-thermal.dtsi"
+
+//#ifdef OPLUS_ARCH_EXTENDS
+&i2s1_sd1_active {
+	config {
+		/delete-property/ bias-disable;
+		bias-pull-down;         /* PULL DOWN */
+	};
+};
+
+&qupv3_se0_i2c_sda_active {
+	config {
+		/delete-property/ bias-pull-up;
+		bias-disable;
+	};
+};
+
+&qupv3_se0_i2c_scl_active {
+	config {
+		/delete-property/ bias-pull-up;
+		bias-disable;
+	};
+};
+//#endif /* OPLUS_ARCH_EXTENDS */

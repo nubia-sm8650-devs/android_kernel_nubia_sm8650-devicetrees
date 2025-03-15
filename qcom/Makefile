@@ -48,6 +48,10 @@ CLIFFS_BOARDS += \
 		 cliffs-qrd-overlay.dtbo \
 		 cliffs-rcm-overlay.dtbo \
 		 cliffs-mtp-kiwi-2s-nfc-wcd9395-overlay.dtbo \
+		 cliffs-mtp-kiwi-overlay.dtbo \
+ 		 cliffs-mtp-peach-2s-nfc-wcd9395-overlay.dtbo \
+ 		 cliffs-mtp-peach-2s-nfc-wcd9395-pm8550b-overlay.dtbo \
+ 		 cliffs-mtp-peach-overlay.dtbo \
 		 cliffs-mtp-pm8550b-overlay.dtbo \
 		 cliffs-mtp-kiwi-2s-nfc-wcd9395-pm8550b-overlay.dtbo \
 		 cliffs-rcm-qhdp-overlay.dtbo \
@@ -231,22 +235,28 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += cliffs-vm-rumi.dtb \
 		cliffs-vm-atp.dtb \
 		cliffs-vm-cdp.dtb \
 		cliffs-vm-mtp.dtb \
+		cliffs-vm-mtp-kiwi.dtb \
+ 		cliffs-vm-mtp-peach.dtb \
 		cliffs-vm-qrd.dtb \
 		cliffs-vm-rcm.dtb \
 		cliffs-vm-rcm-fhdp-kiwi.dtb \
 		cliffs-vm-rcm-qhdp.dtb \
 		cliffs-vm-rcm-qhdp-kiwi.dtb \
 		cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb \
+		cliffs-vm-mtp-peach-2s-nfc-wcd9395.dtb \
 		cliffs-oemvm-atp.dtb \
 		cliffs-oemvm-cdp.dtb \
 		cliffs-oemvm-mtp.dtb \
+		cliffs-oemvm-mtp-kiwi.dtb \
+ 		cliffs-oemvm-mtp-peach.dtb \
 		cliffs-oemvm-qrd.dtb \
 		cliffs-oemvm-rcm.dtb \
 		cliffs-oemvm-rumi.dtb \
 		cliffs-oemvm-rcm-fhdp-kiwi.dtb \
 		cliffs-oemvm-rcm-qhdp.dtb \
 		cliffs-oemvm-rcm-qhdp-kiwi.dtb \
-		cliffs-oemvm-mtp-kiwi-2s-nfc-wcd9395.dtb
+		cliffs-oemvm-mtp-kiwi-2s-nfc-wcd9395.dtb \
+		cliffs-oemvm-mtp-peach-2s-nfc-wcd9395.dtb
 
 dtb-y += $(pineapple_tuivm-dtb-y)
 endif
