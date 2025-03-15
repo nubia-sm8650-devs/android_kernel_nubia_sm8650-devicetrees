@@ -1,9 +1,7 @@
 vendor := $(srctree)/$(src)
 
 ifneq "$(wildcard $(vendor)/qcom)" ""
-#OPLUS_DTS_OVERLAY start
-	#subdir-y += qcom
-#OPLUS_DTS_OVERLAY end
+	subdir-y += qcom
 endif
 #OPLUS_DTS_OVERLAY start
 subdir-y += oplus

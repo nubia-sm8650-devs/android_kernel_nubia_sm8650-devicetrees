@@ -16,32 +16,35 @@ dtbo-y += kalama-audio.dtbo \
 endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
-dtbo-y += pineapple-audio.dtbo \
-#                 pineapple-audio-cdp.dtbo \
-#                 pineapple-audio-wsa883x-cdp.dtbo \
-#                 pineapple-audio-cdp-nfc.dtbo \
-#                 pineapple-audio-mtp.dtbo \
-#                 pineapple-audio-mtp-nfc.dtbo \
-#                 pineapple-audio-qrd.dtbo \
-#                 pineapple-audio-atp.dtbo \
-#                 pineapple-audio-rumi.dtbo \
-#                 pineapple-audio-rcm.dtbo \
-#                 pineapple-audio-qrd-sku2.dtbo \
-#                 pineapplep-audio-hdk.dtbo \
-#                 pineapplep-audio-aim500.dtbo \
-#                 cliffs-audio.dtbo \
-#                 cliffs-audio-mtp.dtbo \
-#                 cliffs7-audio-mtp.dtbo \
-#                 cliffs-audio-qrd.dtbo \
-#                 cliffs7-audio-qrd.dtbo \
-#                 cliffs-audio-cdp.dtbo \
-#                 cliffs7-audio-cdp.dtbo \
-#                 cliffs-audio-rcm.dtbo \
-#                 cliffs7-audio-rcm.dtbo \
-#                 cliffs-audio-mtp-wcd9395.dtbo \
-#                 cliffs7-audio-mtp-wcd9395.dtbo \
-#                 cliffs-audio-atp.dtbo \
-#                 cliffs7-audio-atp.dtbo
+dtbo-y += pineapple-audio.dtbo
+ifneq ($(CONFIG_OPLUS_DEVICE_DTBS), y)
+dtbo-y += \
+                 pineapple-audio-cdp.dtbo \
+                 pineapple-audio-wsa883x-cdp.dtbo \
+                 pineapple-audio-cdp-nfc.dtbo \
+                 pineapple-audio-mtp.dtbo \
+                 pineapple-audio-mtp-nfc.dtbo \
+                 pineapple-audio-qrd.dtbo \
+                 pineapple-audio-atp.dtbo \
+                 pineapple-audio-rumi.dtbo \
+                 pineapple-audio-rcm.dtbo \
+                 pineapple-audio-qrd-sku2.dtbo \
+                 pineapplep-audio-hdk.dtbo \
+                 pineapplep-audio-aim500.dtbo \
+                 cliffs-audio.dtbo \
+                 cliffs-audio-mtp.dtbo \
+                 cliffs7-audio-mtp.dtbo \
+                 cliffs-audio-qrd.dtbo \
+                 cliffs7-audio-qrd.dtbo \
+                 cliffs-audio-cdp.dtbo \
+                 cliffs7-audio-cdp.dtbo \
+                 cliffs-audio-rcm.dtbo \
+                 cliffs7-audio-rcm.dtbo \
+                 cliffs-audio-mtp-wcd9395.dtbo \
+                 cliffs7-audio-mtp-wcd9395.dtbo \
+                 cliffs-audio-atp.dtbo \
+                 cliffs7-audio-atp.dtbo
+endif
 #OPLUS_DTS_OVERLAY start
 dtbo-y += oplus/waffle-22825-audio-pineapple-overlay.dtbo
 dtbo-y += oplus/audi-23803-audio-cliffs-overlay.dtbo
