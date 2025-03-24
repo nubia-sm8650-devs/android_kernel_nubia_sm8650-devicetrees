@@ -1,6 +1,10 @@
 DTC_INCLUDE += $(srctree)/../sm8650-modules/qcom/opensource/camera-kernel
 
+ifneq (,$(filter tiro cerro,$(ZTE_BOARD_NAME)))
+include $(srctree)/$(src)/config/$(ZTE_BOARD_NAME).mk
+else
 include $(srctree)/$(src)/config/pineapple.mk
+endif
 
 always-y	:= $(dtbo-y) $(dtb-y)
 subdir-y	:= $(dts-dirs)
