@@ -1462,7 +1462,7 @@
 			};
 
 			gpu0_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1500,7 +1500,7 @@
 			};
 
 			gpu1_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1538,7 +1538,7 @@
 			};
 
 			gpu2_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1576,7 +1576,7 @@
 			};
 
 			gpu3_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1614,7 +1614,7 @@
 			};
 
 			gpu4_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1652,7 +1652,7 @@
 			};
 
 			gpu5_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1690,7 +1690,7 @@
 			};
 
 			gpu6_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1728,7 +1728,7 @@
 			};
 
 			gpu7_tj_cfg: tj_cfg {
-				temperature = <95000>;
+				temperature = <110000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
