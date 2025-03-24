@@ -469,7 +469,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			 RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
-		proxy-supply = <&L11B>;
+		//proxy-supply = <&L11B>;
 
 		L11B: pm_humu_l11: regulator-pm-humu-l11 {
 			regulator-name = "pm_humu_l11";
@@ -490,7 +490,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			 RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
-		proxy-supply = <&L12B>;
+		//proxy-supply = <&L12B>;
 
 		L12B: pm_humu_l12: regulator-pm-humu-l12 {
 			regulator-name = "pm_humu_l12";
@@ -511,7 +511,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			 RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
-		proxy-supply = <&L13B>;
+		//proxy-supply = <&L13B>;
 
 		L13B: pm_humu_l13: regulator-pm-humu-l13 {
 			regulator-name = "pm_humu_l13";
@@ -1229,9 +1229,9 @@
 		L4M: pm8010m_l4: regulator-pm8010m-l4 {
 			regulator-name = "pm8010m_l4";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <2800000>;
+			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <2800000>;
-			qcom,init-voltage = <2800000>;
+			qcom,init-voltage = <1800000>;
 		};
 	};
 
