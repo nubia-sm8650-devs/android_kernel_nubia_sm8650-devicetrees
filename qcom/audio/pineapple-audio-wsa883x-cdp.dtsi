@@ -3,10 +3,10 @@
 &pineapple_snd {
 	qcom,model = "pineapple-cdp-wsa883x-snd-card";
 	asoc-codec  = <&stub_codec>, <&lpass_cdc>,
-			<&wcd939x_codec>, <&swr_haptics>,
+			<&wcd939x_codec>,
 			<&wsa883x_0221>, <&wsa883x_0222>;
 	asoc-codec-names = "msm-stub-codec.1", "lpass-cdc",
-			"wcd939x_codec", "swr-haptics",
+			"wcd939x_codec",
 			"wsa-codec1", "wsa-codec2";
 };
 
