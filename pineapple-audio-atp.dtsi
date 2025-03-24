@@ -1,9 +1,5 @@
 #include "pineapple-audio-mtp.dtsi"
 
-&swr_haptics {
-    status = "disabled";
-};
-
 &pineapple_snd {
 	asoc-codec  = <&stub_codec>, <&lpass_cdc>,
 		<&wcd939x_codec>, <&wsa884x_0220>,
