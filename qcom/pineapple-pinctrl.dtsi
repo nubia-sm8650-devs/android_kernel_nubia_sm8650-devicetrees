@@ -10,6 +10,7 @@
 				pins = "gpio30";
 				drive-strength = <2>;
 				bias-disable;
+				output-low;
 			};
 		};
 
@@ -23,6 +24,7 @@
 				pins = "gpio31";
 				drive-strength = <2>;
 				bias-disable;
+				output-low;
 			};
 		};
 
@@ -36,6 +38,7 @@
 				pins = "gpio30", "gpio31";
 				drive-strength = <2>;
 				bias-pull-down;
+				output-low;
 			};
 		};
 	};
@@ -110,12 +113,12 @@
 	pcie1 {
 		pcie1_perst_default: pcie1_perst_default {
 			mux {
-				pins = "gpio97";
+				pins = "gpio209";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio97";
+				pins = "gpio209";
 				drive-strength = <2>;
 				bias-pull-down;
 			};
@@ -136,12 +139,12 @@
 
 		pcie1_wake_default: pcie1_wake_default {
 			mux {
-				pins = "gpio99";
+				pins = "gpio208";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio99";
+				pins = "gpio208";
 				drive-strength = <2>;
 				bias-pull-up;
 			};
@@ -3566,6 +3569,45 @@
 				drive-strength = <2>;
 				bias-disable;
 			};
+		};
+	};
+
+	fp_shutdown_active:active{
+		mux{
+			pins = "gpio89";
+			function = "gpio";
+		};
+		config{
+			pins = "gpio89";
+			drive-strength = <8>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	fp_shutdown_suspend:suspend{
+		mux{
+			pins = "gpio89";
+			function = "gpio";
+		};
+		config{
+			pins = "gpio89";
+			drive-strength = <8>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	goodix_pwr_active: goodix_pwr_active {
+		mux{
+			pins = "gpio93";
+			function = "gpio";
+		};
+			config {
+			pins = "gpio93";
+			drive-strength = <8>;
+			bias-disable;
+			output-high;
 		};
 	};
 };

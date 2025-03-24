@@ -45,6 +45,83 @@
 			linux,can-disable;
 		};
 	};
+
+	goodix_fp {
+		status = "ok";
+		compatible = "goodix,fingerprint";
+		spi-max-frequency = <4800000>;
+		qcom,qup-id = <3>;
+		reg = <0>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <92 0x2008>;
+		pinctrl-names = "goodix_active", "goodix_suspend", "pwr_active";
+		pinctrl-0 = <&fp_shutdown_active>;
+		pinctrl-1 = <&fp_shutdown_suspend>;
+		pinctrl-2 = <&goodix_pwr_active>;
+
+		fp-gpio-reset = <&tlmm 89 0x0>;
+		fp-gpio-irq = <&tlmm 92 0x2008>;
+		goodix,gpio_pwr = <&tlmm 93 0x1>;
+		interrupt-names = "goodix_wake_up";
+	};
+};
+
+/* add zte haptic start */
+&qupv3_hub_i2c4 {
+	status = "ok";
+	qcom,clk-freq-out = <1000000>;
+	haptic_hv@5A {
+		compatible = "awinic,haptic_hv";
+		reg = <0x5A>;
+		irq-gpio = <&tlmm 163 0>;
+		reset-gpio = <&tlmm 90 0>;
+		pinctrl-names = "irq_active";
+		pinctrl-0 = <&gpio163_input_pull_up>;
+		f0_pre = < 1700 >;
+		mode = /bits/ 8 < 1 >;
+		f0_cali_percent = /bits/ 8 < 7 >;
+/******************************aw8692x*******************************/
+		aw8692x_max_bst_vol = /bits/ 8 < 0x7F >;
+		aw8692x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
+		aw8692x_cont_drv2_lvl = /bits/ 8 < 0x50 >;
+		aw8692x_cont_drv1_time = /bits/ 8 < 0x04 >;
+		aw8692x_cont_drv2_time = /bits/ 8 < 0x06 >;
+		aw8692x_cont_drv_width = /bits/ 8 < 0x6A >;
+		aw8692x_cont_wait_num = /bits/ 8 < 0x06 >;
+		aw8692x_cont_brk_time = /bits/ 8 < 0 >;
+		aw8692x_cont_track_margin = /bits/ 8 < 0x0C >;
+		aw8692x_brk_bst_md = /bits/ 8 < 0 >;
+		aw8692x_cont_tset = /bits/ 8 < 0x06 >;
+		aw8692x_cont_bemf_set = /bits/ 8 < 0x02 >;
+		aw8692x_cont_bst_brk_gain = /bits/ 8 < 0x05 >;
+		aw8692x_cont_brk_gain = /bits/ 8 < 0x08 >;
+		aw8692x_duration_time = /bits/ 8 < 20 30 60 >;
+		aw8692x_d2s_gain = /bits/ 8 < 0x04 >;
+		aw8692x_trig_config = /bits/ 8 < 0 0 0 1 0 2 0 0
+						 0 0 0 1 0 2 0 0
+						 0 0 0 1 0 2 0 0 >;
+		aw8692x_bst_vol_default = /bits/ 8 < 0x50 >;
+		aw8692x_bst_vol_ram = /bits/ 8 < 0x50 >;
+		aw8692x_bst_vol_rtp = /bits/ 8 < 0x50 >;
+		/* aw8692x_is_enabled_auto_bst; */
+		/* aw8692x_is_enabled_one_wire; */
+	};
+};
+&tlmm {
+	gpio163_input_pull_up: gpio163_input_pull_up {
+		mux {
+			 pins = "gpio163";
+			 function = "gpio";
+		};
+
+		config {
+			pins = "gpio163";
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+	};
 };
 
 &ufsphy_mem {
@@ -206,46 +283,6 @@
 	};
 };
 
-&qupv3_se4_spi {
-	#address-cells = <1>;
-	#size-cells = <0>;
-
-	status = "ok";
-	qcom,touch-active = "goodix,gt9916S";
-	qcom,la-vm;
-
-	goodix-berlin@0 {
-		compatible = "goodix,gt9916S";
-		reg = <0>;
-		spi-max-frequency = <1000000>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <162 0x2008>;
-		goodix,reset-gpio = <&tlmm 161 0x00>;
-		goodix,irq-gpio = <&tlmm 162 0x2008>;
-		goodix,irq-flags = <2>;
-		goodix,panel-max-x = <1080>;
-		goodix,panel-max-y = <2400>;
-		goodix,panel-max-w = <255>;
-		goodix,panel-max-p = <4096>;
-		goodix,firmware-name = "goodix_firmware_spi.bin";
-		goodix,config-name = "goodix_cfg_group_spi.bin";
-		goodix,avdd-name = "avdd";
-		goodix,iovdd-name = "iovdd";
-		avdd-supply = <&L14B>;
-		iovdd-supply = <&L12B>;
-		goodix,touch-type = "primary";
-		goodix,qts_en;
-		qts,trusted-touch-mode = "vm_mode";
-		qts,touch-environment = "pvm";
-		qts,trusted-touch-type = "primary";
-		qts,trusted-touch-spi-irq = <598>;
-		qts,trusted-touch-io-bases = <0xa90000>;
-		qts,trusted-touch-io-sizes = <0x1000>;
-		qts,trusted-touch-vm-gpio-list = <&tlmm 48 0 &tlmm 49 0 &tlmm 50 0
-						&tlmm 51 0 &tlmm 161 0 &tlmm 162 0x2008>;
-	};
-};
-
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
 	periph-1c2-supply = <&L2B>;
@@ -311,14 +348,88 @@
 	periph-c44-supply = <&L5M>;
 	periph-c45-supply = <&L6M>;
 	periph-c46-supply = <&L7M>;
-	periph-d40-supply = <&L1N>;
-	periph-d41-supply = <&L2N>;
-	periph-d42-supply = <&L3N>;
-	periph-d43-supply = <&L4N>;
-	periph-d44-supply = <&L5N>;
-	periph-d45-supply = <&L6N>;
-	periph-d46-supply = <&L7N>;
 };
+
+/*aw22xxx_led start*/
+&qupv3_hub_i2c3 {
+  #address-cells = <1>;
+  #size-cells = <0>;
+  status = "okay";
+  qcom,clk-freq-out = <400000>;
+	aw22xxx_led@6a {
+		status = "okay";
+		compatible = "awinic,aw22xxx_led";
+		reg = <0x6a>;
+		reset-gpio = <&tlmm 123 0x0>;
+		nubia_ver-gpio = <&tlmm 7 1>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <85 0x2002>;
+		irq-gpio = <&tlmm 85 0x2002>;
+		pinctrl-names = "aw22xxx_led_default", "aw22xxx_led_sleep";
+		pinctrl-0 = <&aw22xxx_int_active &aw22xxx_reset_active>;
+		pinctrl-1 = <&aw22xxx_int_suspend &aw22xxx_reset_suspend>;
+		aw22xxx,led {
+			aw22xxx,name = "aw22xxx_led";
+			aw22xxx,imax = <9>;
+			aw22xxx,brightness = <128>;
+			aw22xxx,max_brightness = <255>;
+		};
+	};
+};
+
+&tlmm{
+		aw22xxx_reset {
+			aw22xxx_reset_active: aw22xxx_reset_active {
+				mux {
+					pins = "gpio123";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio123";
+					drive-strength = <6>;
+					bias-pull-up;
+				};
+			};
+
+			aw22xxx_reset_suspend: aw22xxx_reset_suspend {
+				mux {
+					pins = "gpio123";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio123";
+					drive-strength = <6>;
+					bias-pull-up;
+				};
+			};
+		};
+
+		aw22xxx_int {
+			aw22xxx_int_active: aw22xxx_int_active {
+				mux {
+					pins = "gpio85";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio85";
+					drive-strength = <6>;
+					bias-pull-up;
+				};
+			};
+			aw22xxx_int_suspend: aw22xxx_int_suspend {
+				mux {
+					pins = "gpio85";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio85";
+					drive-strength = <6>;
+					bias-pull-up;
+				};
+			};
+		};
+};
+/*aw22xxx_led end*/
 
 &wcd_usbss {
 	interrupt-parent = <&spmi_bus>;
