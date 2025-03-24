@@ -973,7 +973,7 @@
 
 	cam_csiphy3: qcom,csiphy3@acea000 {
 		cell-index = <3>;
-		compatible = "qcom,csiphy-v2.2.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.2.0_z60u_tele", "qcom,csiphy";
 		reg = <0xacea000 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0xea000>;

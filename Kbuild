@@ -1,5 +1,9 @@
 # Use current $(MSM_ARCH) to set config/ makefile path
+ifneq (,$(filter tiro cerro,$(ZTE_BOARD_NAME)))
+CAMERA_TARGET_MKFILE_PATH := $(CAMERA_DEVICETREE_ROOT)/config/$(ZTE_BOARD_NAME).mk
+else
 CAMERA_TARGET_MKFILE_PATH := $(CAMERA_DEVICETREE_ROOT)/config/$(MSM_ARCH).mk
+endif
 # Check to see if current target makefile exists
 CAMERA_TARGET_EXISTS := $(or $(and $(wildcard $(CAMERA_TARGET_MKFILE_PATH)),y),n)
 
