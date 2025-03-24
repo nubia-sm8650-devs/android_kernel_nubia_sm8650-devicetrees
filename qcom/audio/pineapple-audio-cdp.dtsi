@@ -128,10 +128,10 @@
 		"VA DMIC7", "VA MIC BIAS4";
 	qcom,cdc-dmic67-gpios = <&cdc_dmic67_gpios>;
 	asoc-codec  = <&stub_codec>, <&lpass_cdc>,
-			<&wcd939x_codec>, <&swr_haptics>,
+			<&wcd939x_codec>, 
 			<&wsa884x_0220>, <&wsa884x_0221>;
 	asoc-codec-names = "msm-stub-codec.1", "lpass-cdc",
-			"wcd939x_codec", "swr-haptics",
+			"wcd939x_codec", 
 			"wsa-codec1", "wsa-codec2";
 	qcom,wsa-max-devs = <2>;
 	qcom,pri-mi2s-gpios = <&cdc_pri_mi2s_gpios>;
