@@ -1,0 +1,4 @@
+dtbo-y += zte-tiro-overlay.dtbo
+
+always-y	:= $(dtbo-y)
+clean-files	:= *.dtbo
