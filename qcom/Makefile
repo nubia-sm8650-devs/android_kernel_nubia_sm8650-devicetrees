@@ -434,4 +434,7 @@ dtb-y += $(sdmsteppeauto-dtb-y)
 always-y        := $(dtb-y)
 subdir-y        := $(dts-dirs)
 subdir-y        += audio bt camera data display dsp eSE eva fingerprint graphics mm mmrm mm-sys nfc synx video wlan
+ifneq (,$(CONFIG_ZTE_BOARD_NAME))
+subdir-y        += $(CONFIG_ZTE_BOARD_NAME)
+endif
 clean-files     := *.dtb *.dtbo

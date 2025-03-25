@@ -1,0 +1,4 @@
+dtbo-y += zte-cerro-overlay.dtbo
+
+always-y	:= $(dtbo-y)
+clean-files	:= *.dtbo
