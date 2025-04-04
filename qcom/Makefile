@@ -17,7 +17,10 @@ PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb
 
 PINEAPPLE_BOARDS += \
-		 pineapple-mtp-overlay.dtbo \
+		 pineapple-mtp-overlay.dtbo
+
+ifeq ($(CONFIG_ZTE_BOARD_NAME),)
+PINEAPPLE_BOARDS += \
 		 pineapple-mtp-nfc-overlay.dtbo \
 		 pineapple-cdp-overlay.dtbo \
 		 pineapple-cdp-nfc-overlay.dtbo \
@@ -29,12 +32,14 @@ PINEAPPLE_BOARDS += \
 
 NOAPQ_PINEAPPLE_BOARDS += \
 		 pineapple-rumi-overlay.dtbo
+endif
 
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS),$(PINEAPPLE_BASE_DTB))\
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(APQ_PINEAPPLE_BOARDS),$(PINEAPPLE_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
 
+ifeq ($(CONFIG_ZTE_BOARD_NAME),)
 CLIFFS_BASE_DTB += cliffs.dtb cliffs7.dtb
 
 NOAPQ_CLIFFS_BOARDS += \
@@ -49,6 +54,7 @@ NOAPQ_CLIFFS_BOARDS += \
 pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 	$(call add-overlays, $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB)
+endif
 
 dtb-y += $(pineapple-dtb-y)
 
