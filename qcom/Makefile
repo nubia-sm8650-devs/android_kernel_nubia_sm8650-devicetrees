@@ -17,7 +17,10 @@ PINEAPPLE_BASE_DTB += pineapple-v2.dtb pineapple-qcm.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb pineappleq-v2.dtb pineapplep-qcs.dtb
 
 PINEAPPLE_BOARDS += \
-		 pineapple-mtp-overlay.dtbo \
+		 pineapple-mtp-overlay.dtbo
+
+ifeq ($(CONFIG_ZTE_BOARD_NAME),)
+PINEAPPLE_BOARDS += \
 		 pineapple-mtp-nfc-overlay.dtbo \
 		 pineapple-cdp-overlay.dtbo \
 		 pineapple-cdp-nfc-overlay.dtbo \
@@ -29,13 +32,14 @@ PINEAPPLE_BOARDS += \
 		 pineapple-dpm-overlay.dtbo \
 		 pineapplep-aim500-overlay.dtbo \
 		 pineapplep-aim500-v2-overlay.dtbo
-
+endif
 
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS),$(PINEAPPLE_BASE_DTB))\
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(APQ_PINEAPPLE_BOARDS),$(PINEAPPLE_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
 
+ifeq ($(CONFIG_ZTE_BOARD_NAME),)
 CLIFFS_BASE_DTB += cliffs.dtb cliffs7.dtb
 CLIFFS_APQ_BASE_DTB += cliffsp.dtb cliffs7p.dtb
 
@@ -60,7 +64,9 @@ pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 	$(call add-overlays, $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))\
 	$(call add-overlays, $(CLIFFS_BOARDS),$(CLIFFS_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
+endif
 
+ifeq ($(CONFIG_ZTE_BOARD_NAME),)
 VOLCANO_BASE_DTB += volcano.dtb volcano6.dtb volcano6i-fp1.dtb volcano6i-fp2.dtb volcano6i-fp3.dtb volcano6i-fp4.dtb
 VOLCANO_APQ_BASE_DTB += volcano6p.dtb volcano6ip-fp1.dtb volcano6ip-fp2.dtb volcano6ip-fp3.dtb volcano6ip-fp4.dtb
 
@@ -92,6 +98,7 @@ pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 	$(call add-overlays, $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS),$(VOLCANO_BASE_DTB))\
 	$(call add-overlays, $(VOLCANO_BOARDS), $(VOLCANO_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_VOLCANO) += $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS) $(VOLCANO_BASE_DTB) $(VOLCANO_APQ_BASE_DTB)
+endif
 
 dtb-y += $(pineapple-dtb-y)
 
