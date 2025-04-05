@@ -56,7 +56,11 @@ pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB)
 endif
 
+ifneq ($(CONFIG_DT_NON_OVERLAY),)
 dtb-y += $(pineapple-dtb-y)
+else
+dtb-y += $(pineapple-overlays-dtb-y)
+endif
 
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb
