@@ -79,7 +79,11 @@ pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 pineapple-overlays-dtb-$(CONFIG_ARCH_VOLCANO) += $(NOAPQ_VOLCANO_BOARDS) $(VOLCANO_BASE_DTB)
 endif
 
+ifneq ($(CONFIG_DT_NON_OVERLAY),)
 dtb-y += $(pineapple-dtb-y)
+else
+dtb-y += $(pineapple-overlays-dtb-y)
+endif
 
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb
