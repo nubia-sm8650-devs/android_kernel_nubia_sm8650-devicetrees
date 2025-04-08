@@ -84,24 +84,6 @@
         };
     };
 
-	zte_tp:zte_tp {
-		compatible = "zte_tp";
-		zte,tp_algo;
-		zte,tp_jitter_check = <15>;
-		zte,tp_jitter_timer = <80>;
-		zte,tp_long_press;
-		zte,tp_long_press_timer = <800>;
-		zte,tp_long_press_left_v = <320>;
-		zte,tp_long_press_right_v = <320>;
-		zte,tp_long_press_left_h = <480>; /*camera */
-		zte,tp_long_press_right_h = <320>; /*charger */
-		zte,tp_edge_click_suppression_pixel = <80>;
-		zte,ufp_enable;
-		zte,ufp_circle_center_x = <8928>;
-		zte,ufp_circle_center_y = <29728>;
-		zte,ufp_circle_radius = <1280>;
-	};
-	
     hall_sensor {
 		compatible = "ah,hall_ic";
 		vddio-supply = <&L1B>;
