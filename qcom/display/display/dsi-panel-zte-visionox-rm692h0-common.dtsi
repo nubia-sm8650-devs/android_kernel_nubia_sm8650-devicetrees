@@ -1,9 +1,9 @@
-			zte,mdss-dsi-hbm-on-commands = [
+			qcom,mdss-dsi-hbm-on-command = [
 				15 01 00 00 00 00 02 FE 00
 				39 01 00 00 00 00 02 53 20
 				39 01 00 00 00 00 03 51 0f ff
 			];
-			zte,mdss-dsi-hbm-off-commands = [
+			qcom,mdss-dsi-hbm-off-command = [
 				15 01 00 00 00 00 02 FE 00
 				39 01 00 00 00 00 02 53 20
 				39 01 00 00 00 00 03 51 03 22
@@ -63,8 +63,8 @@
 				15 01 00 00 00 00 02 FE 00
 				15 01 00 00 00 00 02 55 13
 			];
-			zte,mdss-dsi-hbm-on-commands-state = "dsi_lp_mode";
-			zte,mdss-dsi-hbm-off-commands-state = "dsi_lp_mode";
+			qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
+			qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 			zte,mdss-dsi-aod-low-commands-state = "dsi_lp_mode";
 			zte,mdss-dsi-aod-mid-commands-state = "dsi_lp_mode";
 			zte,mdss-dsi-aod-high-commands-state = "dsi_lp_mode";
