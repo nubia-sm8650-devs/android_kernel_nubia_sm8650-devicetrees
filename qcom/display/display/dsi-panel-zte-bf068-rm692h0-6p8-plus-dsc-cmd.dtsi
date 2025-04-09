@@ -1165,6 +1165,7 @@
 	qcom,mdss-dsi-panel-status-value = <0x9c 0x01>;
 	qcom,mdss-dsi-panel-status-read-length = <1 1>;
 	qcom,dsi-select-clocks = "pll_byte_clk0", "pll_dsi_clk0";
+	#include "dsi-panel-zte-visionox-rm692h0-fod-dim-lut.dtsi"
 	qcom,mdss-dsi-display-timings {
 		timing@0 { /* 60Hz */
 			/* DPHY regular margins */
