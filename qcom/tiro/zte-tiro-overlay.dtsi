@@ -57,7 +57,7 @@
 
 	gpio_keys_nubia {
         status = "okay";
-		compatible = "gpio-keys_nubia";
+		compatible = "gpio-keys";
 		label = "gpio-keys_nubia";
 
 		game_sw {
