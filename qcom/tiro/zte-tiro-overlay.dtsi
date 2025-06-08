@@ -398,7 +398,6 @@
 		reg = <0x0>;
 
 		duty-cycle = <30>;
-		max-buf-size = <40000>;
 		spi-max-frequency = <5000000>;
 	};
 };
