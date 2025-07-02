@@ -165,3 +165,7 @@
 &wsa_spkr_en13 {
 	status = "disabled";
 };
+
+&qupv3_se6_i2c {
+	status = "disabled";
+};
