@@ -223,3 +223,68 @@
 	regulator-min-microvolt = <2800000>;
 	qcom,init-voltage = <2800000>;
 };
+
+&tlmm {
+	fp_shutdown_active: active{
+		mux {
+			pins = "gpio89";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio89";
+			drive-strength = <8>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	fp_shutdown_suspend: suspend{
+		mux {
+			pins = "gpio89";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio89";
+			drive-strength = <8>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	goodix_pwr_active: goodix_pwr_active {
+		mux {
+			pins = "gpio93";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio93";
+			drive-strength = <8>;
+			bias-disable;
+			output-high;
+		};
+	};
+};
+
+&soc {
+	goodix_fp {
+		compatible = "goodix,fingerprint";
+		spi-max-frequency = <4800000>;
+		qcom,qup-id = <3>;
+		reg = <0>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <92 0x2008>;
+		pinctrl-names = "goodix_active", "goodix_suspend", "pwr_active";
+		pinctrl-0 = <&fp_shutdown_active>;
+		pinctrl-1 = <&fp_shutdown_suspend>;
+		pinctrl-2 = <&goodix_pwr_active>;
+
+		fp-gpio-reset = <&tlmm 89 0x0>;
+		fp-gpio-irq = <&tlmm 92 0x2008>;
+		goodix,gpio_pwr = <&tlmm 93 0x1>;
+		interrupt-names = "goodix_wake_up";
+	};
+};
