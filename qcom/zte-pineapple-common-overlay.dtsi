@@ -106,3 +106,62 @@
 	/* enable fast_capacity */
 	qcom,fast-capacity-enable;
 };
+
+&lpass_cdc {
+	qcom,num-macros = <3>;
+};
+
+&swr1 {
+	qcom,swr-num-dev = <1>;
+};
+
+&swr_haptics {
+	status = "disabled";
+};
+
+&wsa_macro {
+	status = "disabled";
+};
+
+&spf_core_platform {
+	sound {
+		qcom,mi2s-audio-intf = <1>;
+		qcom,pri-mi2s-gpios = <&cdc_pri_mi2s_gpios>;
+
+		asoc-codec = <&stub_codec>, <&lpass_cdc>,
+			     <&wcd939x_codec>,
+			     <&wsa884x_0220>, <&wsa884x_0221>;
+		asoc-codec-names = "msm-stub-codec.1", "lpass-cdc",
+				   "wcd939x_codec",
+				   "wsa-codec1", "wsa-codec2";
+		qcom,wsa-max-devs = <0>;
+	};
+};
+
+&cdc_pri_mi2s_gpios {
+	status = "okay";
+};
+
+&cdc_dmic01_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic23_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic45_gpios {
+	status = "disabled";
+};
+
+&cdc_dmic67_gpios {
+	status = "disabled";
+};
+
+&wsa_spkr_en02 {
+	status = "disabled";
+};
+
+&wsa_spkr_en13 {
+	status = "disabled";
+};
