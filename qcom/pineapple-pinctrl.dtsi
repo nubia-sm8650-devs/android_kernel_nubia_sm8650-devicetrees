@@ -3571,43 +3571,4 @@
 			};
 		};
 	};
-
-	fp_shutdown_active:active{
-		mux{
-			pins = "gpio89";
-			function = "gpio";
-		};
-		config{
-			pins = "gpio89";
-			drive-strength = <8>;
-			bias-disable;
-			output-high;
-		};
-	};
-
-	fp_shutdown_suspend:suspend{
-		mux{
-			pins = "gpio89";
-			function = "gpio";
-		};
-		config{
-			pins = "gpio89";
-			drive-strength = <8>;
-			bias-disable;
-			output-low;
-		};
-	};
-
-	goodix_pwr_active: goodix_pwr_active {
-		mux{
-			pins = "gpio93";
-			function = "gpio";
-		};
-			config {
-			pins = "gpio93";
-			drive-strength = <8>;
-			bias-disable;
-			output-high;
-		};
-	};
 };
