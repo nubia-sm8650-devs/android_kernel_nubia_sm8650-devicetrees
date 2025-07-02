@@ -169,3 +169,7 @@
 &qupv3_se6_i2c {
 	status = "disabled";
 };
+
+&qcom_qbt {
+	status = "disabled";
+};
