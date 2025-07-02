@@ -173,3 +173,11 @@
 &qcom_qbt {
 	status = "disabled";
 };
+
+&pm8550b_haptics {
+	status = "disabled";
+};
+
+&socd_trip {
+	temperature = <98>;
+};
