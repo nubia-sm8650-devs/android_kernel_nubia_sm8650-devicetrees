@@ -10,7 +10,6 @@
 				pins = "gpio30";
 				drive-strength = <2>;
 				bias-disable;
-				output-low;
 			};
 		};
 
@@ -24,7 +23,6 @@
 				pins = "gpio31";
 				drive-strength = <2>;
 				bias-disable;
-				output-low;
 			};
 		};
 
@@ -38,7 +36,6 @@
 				pins = "gpio30", "gpio31";
 				drive-strength = <2>;
 				bias-pull-down;
-				output-low;
 			};
 		};
 	};

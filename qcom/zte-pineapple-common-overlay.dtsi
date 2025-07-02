@@ -288,3 +288,7 @@
 		interrupt-names = "goodix_wake_up";
 	};
 };
+
+&qupv3_se15_2uart {
+	status = "disabled";
+};
