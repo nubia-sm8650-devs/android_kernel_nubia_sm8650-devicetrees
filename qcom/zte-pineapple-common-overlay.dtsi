@@ -292,3 +292,7 @@
 &qupv3_se15_2uart {
 	status = "disabled";
 };
+
+&pcie1 {
+	status = "disabled";
+};
