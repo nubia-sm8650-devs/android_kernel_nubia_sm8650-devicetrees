@@ -427,3 +427,87 @@
     };	
 };
 /*fan end*/
+
+&qupv3_hub_i2c3 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+	qcom,clk-freq-out = <400000>;
+	aw22xxx_led@6a {
+		status = "okay";
+		compatible = "awinic,aw22xxx_led";
+		reg = <0x6a>;
+		reset-gpio = <&tlmm 123 0x0>;
+		nubia_ver-gpio = <&tlmm 7 1>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <85 0x2002>;
+		irq-gpio = <&tlmm 85 0x2002>;
+		pinctrl-names = "aw22xxx_led_default", "aw22xxx_led_sleep";
+		pinctrl-0 = <&aw22xxx_int_active &aw22xxx_reset_active>;
+		pinctrl-1 = <&aw22xxx_int_suspend &aw22xxx_reset_suspend>;
+		aw22xxx,led {
+			aw22xxx,name = "aw22xxx_led";
+			aw22xxx,imax = <9>;
+			aw22xxx,brightness = <128>;
+			aw22xxx,max_brightness = <255>;
+		};
+	};
+};
+
+&tlmm {
+	aw22xxx_reset {
+		aw22xxx_reset_active: aw22xxx_reset_active {
+			mux {
+				pins = "gpio123";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio123";
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+		};
+
+		aw22xxx_reset_suspend: aw22xxx_reset_suspend {
+			mux {
+				pins = "gpio123";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio123";
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	aw22xxx_int {
+		aw22xxx_int_active: aw22xxx_int_active {
+			mux {
+				pins = "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85";
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+		};
+
+		aw22xxx_int_suspend: aw22xxx_int_suspend {
+			mux {
+				pins = "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85";
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+		};
+	};
+};
