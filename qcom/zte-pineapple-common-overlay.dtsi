@@ -181,3 +181,13 @@
 &socd_trip {
 	temperature = <98>;
 };
+
+&L4M {
+	regulator-min-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+};
+
+&L7M {
+	regulator-min-microvolt = <2800000>;
+	qcom,init-voltage = <2800000>;
+};
