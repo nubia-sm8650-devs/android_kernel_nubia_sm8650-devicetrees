@@ -2,43 +2,6 @@
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
 
-&reserved_memory {
-};
-
-&qupv3_se0_i2c {
-	status = "ok";
-	/delete-node/ nq@28;
-	st21nfc: st21nfc@08 {
-		compatible = "st,st21nfc";
-		reg = <0x08>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <75  0>;
-		reset-gpios = <&tlmm 34 0x00>;
-		irq-gpios = <&tlmm 75 0x00>;
-		// pidle-gpios = <&tlmm 48 0x00>;
-		clkreq-gpios = <&tlmm 35 0x00>;
-		//clocks = <&clock_rpmh RPMH_RF_CLK3>;
-		//clock-names = "nfc_ref_clk";
-		st,clk_pinctrl;
-		status = "ok";
-	};
-};
-
-&qupv3_se1_spi {
-	status = "ok";
-	st54spi: st54spi@0 {
-		compatible = "st,st54spi";
-		reg = <0>;
-		spi-max-frequency = <1000000>;
-		/* gpio used as SE_PWR_REQ or SE_nRESET */
-		gpio-power_nreset-std = <&tlmm 46 0x00>;
-
-		/* Power management mode: none, ST54H (default), ST54J */
-		power_mode = "ST54J";
-		status = "ok";
-	};
-};
-
 &soc {
 	nubia_hw_ver_gpio: nubia_hw_gpio_ctrl {
 		compatible = "nubia_hw_gpio_ctrl";
@@ -70,11 +33,6 @@
 			gpio-key,wakeup;
 		};
 	};
-
-    nubia_usb_switch_dp_gpio: nubia_usb_switch_dp_gpio_ctrl {
-        compatible = "nubia,usb_switch_dp";
-        status = "okay";
-    };
 };
 
 &qupv3_se4_spi {
@@ -285,54 +243,9 @@
         };
 };
 
-&qupv3_hub_i2c3 {
-	status = "okay";
-	/* AWINIC AW882XX Smart PA */
-	aw882xx_smartpa@35 {
-		compatible = "awinic,aw882xx_smartpa";
-		reg = <0x35>;
-		dc-flag = <0>;
-		sync-flag = <0>;
-		sound-channel = <0>;
-		aw-tx-topo-id = <0x1000ff00>;
-		aw-rx-topo-id = <0x1000ff01>;
-		aw-tx-port-id = <0x1007>;
-		aw-rx-port-id = <0x1006>;
-		aw-re-min = <4000>;
-		aw-re-max= <30000>;
-		/*aw-cali-mode = "none";*/
-	};
-	aw882xx_smartpa@34 {
-		compatible = "awinic,aw882xx_smartpa";
-		reg = <0x34>;
-		dc-flag = <0>;
-		sync-flag = <0>;
-		sound-channel = <1>;
-		aw-tx-topo-id = <0x1000ff00>;
-		aw-rx-topo-id = <0x1000ff01>;
-		aw-tx-port-id = <0x1007>;
-		aw-rx-port-id = <0x1006>;
-		aw-re-min = <4000>;
-		aw-re-max= <30000>;
-		/*aw-cali-mode = "none";*/
-	};
-};
-	/* AWINIC AW882XX Smart PA End */
-
 &qupv3_hub_i2c4 {
 	haptic_hv@5A {
 		reset-gpio = <&tlmm 90 0>;
-	};
-};
-
-&qupv3_se10_spi {
-	status = "ok";
-	irled@0 {
-		compatible = "ir-spi-led";
-		reg = <0x0>;
-
-		duty-cycle = <30>;
-		spi-max-frequency = <5000000>;
 	};
 };
 
