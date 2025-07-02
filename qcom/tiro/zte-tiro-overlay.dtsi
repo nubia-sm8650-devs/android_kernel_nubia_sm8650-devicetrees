@@ -333,61 +333,9 @@
 };
 	/* AWINIC AW882XX Smart PA End */
 
-/* add zte haptic start */
 &qupv3_hub_i2c4 {
-	status = "ok";
-	qcom,clk-freq-out = <1000000>;
 	haptic_hv@5A {
-		compatible = "awinic,haptic_hv";
-		reg = <0x5A>;
-		irq-gpio = <&tlmm 163 0>;
 		reset-gpio = <&tlmm 90 0>;
-		pinctrl-names = "irq_active";
-		pinctrl-0 = <&gpio163_input_pull_up>;
-		f0_pre = < 1700 >;
-		mode = /bits/ 8 < 1 >;
-		f0_cali_percent = /bits/ 8 < 7 >;
-/******************************aw8692x*******************************/
-		aw8692x_max_bst_vol = /bits/ 8 < 0x7F >;
-		aw8692x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
-		aw8692x_cont_drv2_lvl = /bits/ 8 < 0x50 >;
-		aw8692x_cont_drv1_time = /bits/ 8 < 0x04 >;
-		aw8692x_cont_drv2_time = /bits/ 8 < 0x06 >;
-		aw8692x_cont_drv_width = /bits/ 8 < 0x6A >;
-		aw8692x_cont_wait_num = /bits/ 8 < 0x06 >;
-		aw8692x_cont_brk_time = /bits/ 8 < 0 >;
-		aw8692x_cont_track_margin = /bits/ 8 < 0x0C >;
-		aw8692x_brk_bst_md = /bits/ 8 < 0 >;
-		aw8692x_cont_tset = /bits/ 8 < 0x06 >;
-		aw8692x_cont_bemf_set = /bits/ 8 < 0x02 >;
-		aw8692x_cont_bst_brk_gain = /bits/ 8 < 0x05 >;
-		aw8692x_cont_brk_gain = /bits/ 8 < 0x08 >;
-		aw8692x_duration_time = /bits/ 8 < 20 30 60 >;
-		aw8692x_d2s_gain = /bits/ 8 < 0x04 >;
-		aw8692x_trig_config = /bits/ 8 < 0 0 0 1 0 2 0 0
-						 0 0 0 1 0 2 0 0
-						 0 0 0 1 0 2 0 0 >;
-		aw8692x_bst_vol_default = /bits/ 8 < 0x50 >;
-		aw8692x_bst_vol_ram = /bits/ 8 < 0x50 >;
-		aw8692x_bst_vol_rtp = /bits/ 8 < 0x50 >;
-		/* aw8692x_is_enabled_auto_bst; */
-		/* aw8692x_is_enabled_one_wire; */
-	};
-};
-
-&tlmm {
-	gpio163_input_pull_up: gpio163_input_pull_up {
-		mux {
-			 pins = "gpio163";
-			 function = "gpio";
-		};
-
-		config {
-			pins = "gpio163";
-			drive-strength = <2>;
-			bias-pull-up;
-			input-enable;
-		};
 	};
 };
 
