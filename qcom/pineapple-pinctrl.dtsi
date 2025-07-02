@@ -113,12 +113,12 @@
 	pcie1 {
 		pcie1_perst_default: pcie1_perst_default {
 			mux {
-				pins = "gpio209";
+				pins = "gpio97";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio209";
+				pins = "gpio97";
 				drive-strength = <2>;
 				bias-pull-down;
 			};
@@ -139,12 +139,12 @@
 
 		pcie1_wake_default: pcie1_wake_default {
 			mux {
-				pins = "gpio208";
+				pins = "gpio99";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio208";
+				pins = "gpio99";
 				drive-strength = <2>;
 				bias-pull-up;
 			};
