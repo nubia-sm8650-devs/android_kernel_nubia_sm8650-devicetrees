@@ -224,6 +224,10 @@
 	qcom,init-voltage = <2800000>;
 };
 
+&DBO3 {
+	/delete-property/ gpio;
+};
+
 &tlmm {
 	fp_shutdown_active: active{
 		mux {
