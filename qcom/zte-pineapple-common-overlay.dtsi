@@ -428,10 +428,18 @@
 		compatible = "gpio-keys";
 		label = "gpio-keys_nubia";
 
-		game_sw {
-			label = "game_sw";
-			linux,input-type = <5>;
-			linux,code = <0x0f>;
+		game_sw_on {
+			label = "game_sw_on";
+			linux,input-type = <EV_KEY>;
+			linux,code = <BTN_TRIGGER_HAPPY1>;
+			debounce-interval = <30>;
+			gpio-key,wakeup;
+		};
+
+		game_sw_off {
+			label = "game_sw_off";
+			linux,input-type = <EV_KEY>;
+			linux,code = <BTN_TRIGGER_HAPPY2>;
 			debounce-interval = <30>;
 			gpio-key,wakeup;
 		};
