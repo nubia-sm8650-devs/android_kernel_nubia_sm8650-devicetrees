@@ -22,9 +22,12 @@
 
 &soc {
 	gpio_keys_nubia {
-		game_sw {
+		game_sw_on {
 			gpios = <&tlmm 174 0>;
-			gpion = <&tlmm 182 0>;
+		};
+
+		game_sw_off {
+			gpios = <&tlmm 182 0>;
 		};
 	};
 
