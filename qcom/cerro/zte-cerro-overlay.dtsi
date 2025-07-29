@@ -1,6 +1,5 @@
 /* dtsi for cerro board (PQ83A01)*/
 #include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/input/input.h>
 
 &pm8550b_eusb2_repeater {
 	qcom,param-override-seq =
@@ -22,21 +21,12 @@
 };
 
 &soc {
-    gpio_keys_nubia {
-        status = "okay";
-        compatible = "gpio-keys";
-        label = "gpio-keys_nubia";
-
-        game_sw {
-            label = "game_sw";
-            gpios = <&tlmm 174 0>;
-            gpion = <&tlmm 182 0>;
-            linux,input-type = <5>;
-            linux,code = <0x0a>;
-            debounce-interval = <30>;
-            gpio-key,wakeup;
-        };
-    };
+	gpio_keys_nubia {
+		game_sw {
+			gpios = <&tlmm 174 0>;
+			gpion = <&tlmm 182 0>;
+		};
+	};
 
     hall_sensor {
 		compatible = "ah,hall_ic";
