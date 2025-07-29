@@ -434,6 +434,7 @@
 			linux,code = <KEY_GREEN>;
 			debounce-interval = <30>;
 			gpio-key,wakeup;
+			oneshot;
 		};
 
 		game_sw_off {
@@ -442,6 +443,7 @@
 			linux,code = <KEY_RED>;
 			debounce-interval = <30>;
 			gpio-key,wakeup;
+			oneshot;
 		};
 	};
 
