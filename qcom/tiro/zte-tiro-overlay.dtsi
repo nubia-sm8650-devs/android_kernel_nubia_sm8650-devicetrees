@@ -1,6 +1,5 @@
 /* dtsi for tiro board (NX769J)*/
 #include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/input/input.h>
 
 &soc {
 	nubia_hw_ver_gpio: nubia_hw_gpio_ctrl {
@@ -19,18 +18,9 @@
 	};
 
 	gpio_keys_nubia {
-        status = "okay";
-		compatible = "gpio-keys";
-		label = "gpio-keys_nubia";
-
 		game_sw {
-			label = "game_sw";
 			gpios = <&tlmm 65 0>;
 			gpion = <&tlmm 182 0>;
-			linux,input-type = <5>;
-			linux,code = <0x0f>;
-			debounce-interval = <30>;
-			gpio-key,wakeup;
 		};
 	};
 };
