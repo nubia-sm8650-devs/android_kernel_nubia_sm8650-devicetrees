@@ -431,7 +431,7 @@
 		game_sw_on {
 			label = "game_sw_on";
 			linux,input-type = <EV_KEY>;
-			linux,code = <BTN_TRIGGER_HAPPY1>;
+			linux,code = <KEY_GREEN>;
 			debounce-interval = <30>;
 			gpio-key,wakeup;
 		};
@@ -439,7 +439,7 @@
 		game_sw_off {
 			label = "game_sw_off";
 			linux,input-type = <EV_KEY>;
-			linux,code = <BTN_TRIGGER_HAPPY2>;
+			linux,code = <KEY_RED>;
 			debounce-interval = <30>;
 			gpio-key,wakeup;
 		};
