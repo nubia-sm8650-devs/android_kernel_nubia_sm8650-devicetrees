@@ -1,3 +1,5 @@
+#include <dt-bindings/input/input.h>
+
 &soc {
 	qcom,msm-vendor-imem@14680BF8 {
         reg = <0x14680BF8 0x200>; /* Address and size of IMEM */
@@ -422,14 +424,12 @@
 
 &soc {
 	gpio_keys_nubia {
-        status = "okay";
+		status = "okay";
 		compatible = "gpio-keys";
 		label = "gpio-keys_nubia";
 
 		game_sw {
 			label = "game_sw";
-			gpios = <&tlmm 65 0>;
-			gpion = <&tlmm 182 0>;
 			linux,input-type = <5>;
 			linux,code = <0x0f>;
 			debounce-interval = <30>;
