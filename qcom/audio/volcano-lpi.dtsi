@@ -1859,65 +1859,6 @@
 		};
 	};
 
-	bt_swr_clk_pin {
-		bt_swr_clk_sleep: bt_swr_clk_sleep {
-			mux {
-				pins = "gpio19";
-				function = "func3";
-			};
-
-			config {
-				pins = "gpio19";
-				drive-strength = <2>;
-				input-enable;
-				bias-pull-down;
-			};
-		};
-
-		bt_swr_clk_active: bt_swr_clk_active {
-			mux {
-				pins = "gpio19";
-				function = "func3";
-			};
-
-			config {
-				pins = "gpio19";
-				drive-strength = <2>;
-				slew-rate = <1>;
-				bias-disable;
-			};
-		};
-	};
-
-	bt_swr_data_pin {
-		bt_swr_data_sleep: bt_swr_data_sleep {
-			mux {
-				pins = "gpio20";
-				function = "func3";
-			};
-
-			config {
-				pins = "gpio20";
-				drive-strength = <2>;
-				input-enable;
-				bias-pull-down;
-			};
-		};
-
-		bt_swr_data_active: bt_swr_data_active {
-			mux {
-				pins = "gpio20";
-				function = "func3";
-			};
-
-			config {
-				pins = "gpio20";
-				slew-rate = <1>;
-				bias-bus-hold;
-			};
-		};
-	};
-
 	wsa_swr_clk_pin {
 		wsa_swr_clk_sleep: wsa_swr_clk_sleep {
 			mux {

@@ -129,12 +129,6 @@
 		};
 	};
 
-	lpass_bt_swr: lpass_bt_swr@31E0000 {
-		compatible = "qcom,lpass-bt-swr";
-		swr3: bt_swr_mstr {
-		};
-	};
-
 	pineapple_snd: sound {
 		compatible = "qcom,pineapple-asoc-snd";
 		qcom,mi2s-audio-intf = <1>;
@@ -152,6 +146,5 @@
 	swr0 = "/soc/spf_core_platform/lpass-cdc/wsa-macro@3240000/wsa_swr_master";
 	swr1 = "/soc/spf_core_platform/lpass-cdc/rx-macro@3200000/rx_swr_master";
 	swr2 = "/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master";
-	swr3 = "/soc/spf_core_platform/lpass_bt_swr@31E0000/bt_swr_mstr";
 };
 

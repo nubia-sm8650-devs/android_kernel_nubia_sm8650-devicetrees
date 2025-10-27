@@ -1,10 +1,8 @@
 #include "volcano6i-audio-mtp-wcd9395.dtsi"
-#include "volcano-audio-bt-swr.dtsi"
 
 &pineapple_snd {
 	/delete-property/ qcom,pri-mi2s-gpios;
 	qcom,wcn-bt = <0>;
-	qcom,wcn-btfm-proxy = <1>;
 };
 
 &fm_i2s0_gpios {

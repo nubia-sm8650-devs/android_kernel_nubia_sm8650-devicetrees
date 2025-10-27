@@ -43,7 +43,6 @@
 					"lpass_audio_hw_vote";
 			clocks = <&lpass_core_hw_vote 0>,
 					<&lpass_audio_hw_vote 0>;
-			qcom,swr-master-version = <0x01070000>;
 			qcom,swr_master_id = <3>;
 			qcom,mipi-sdw-block-packing-mode = <1>;
 			swrm-io-base = <0x33b0000 0x0>;
@@ -102,7 +101,6 @@
 					"lpass_audio_hw_vote";
 			clocks = <&lpass_core_hw_vote 0>,
 					<&lpass_audio_hw_vote 0>;
-			qcom,swr-master-version = <0x01070000>;
 			qcom,swr_master_id = <2>;
 			qcom,mipi-sdw-block-packing-mode = <1>;
 			swrm-io-base = <0x3210000 0x0>;
@@ -157,7 +155,6 @@
 					"lpass_audio_hw_vote";
 			clocks = <&lpass_core_hw_vote 0>,
 					<&lpass_audio_hw_vote 0>;
-			qcom,swr-master-version = <0x01070000>;
 			qcom,swr_master_id = <1>;
 			qcom,mipi-sdw-block-packing-mode = <0>;
 			swrm-io-base = <0x3250000 0x0>;
@@ -289,7 +286,7 @@
 			<2 ADC3 0x1 0 SWRM_TX1_CH3>,
 			<3 DMIC0 0x4 0 SWRM_TX2_CH1>,
 			<3 DMIC1 0x8 0 SWRM_TX2_CH2>,
-			<3 MBHC 0x4 0 SWRM_TX2_CH3>,
+			<3 MBHC 0x1 0 SWRM_TX2_CH3>,
 			<4 DMIC2 0x1 0 SWRM_TX2_CH3>,
 			<4 DMIC3 0x2 0 SWRM_TX2_CH4>,
 			<4 DMIC4 0x3 0 SWRM_TX3_CH1>,

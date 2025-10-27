@@ -1,7 +1,6 @@
 #include "volcano-audio-qrd.dtsi"
 
 &pineapple_snd {
-	qcom,model = "volcano6i-qrd-wsa883x-snd-card";
 	/delete-property/ qcom,pri-mi2s-gpios;
 	qcom,wcn-bt = <0>;
 };
