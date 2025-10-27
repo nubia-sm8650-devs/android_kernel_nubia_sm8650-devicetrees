@@ -1,7 +1,0 @@
-#include "volcano-audio-mtp-wcd9395.dtsi"
-#include "volcano-audio-wcn6450.dtsi"
-
-&pineapple_snd {
-	qcom,model = "volcano-mtp-wsa883x_wcd939x_wcn6450-snd-card";
-	qcom,sku-model = "volcano-mtp-wsa883x_wcd939x_wcn6450_sku1-snd-card";
-};

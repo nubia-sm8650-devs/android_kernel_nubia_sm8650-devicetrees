@@ -51,12 +51,8 @@ dtbo-y += volcano-audio.dtbo \
 		volcano-audio-mtp.dtbo \
 		volcano-audio-qrd.dtbo \
 		volcano-audio-atp.dtbo \
-                volcano-audio-cdp-wcn6450.dtbo \
-                volcano-audio-mtp-wcn6450.dtbo \
 		volcano-audio-mtp-wcd9395.dtbo \
 		volcano-audio-cdp-wcd9395.dtbo \
-                volcano-audio-cdp-wcd9395-wcn6450.dtbo \
-                volcano-audio-mtp-wcd9395-wcn6450.dtbo \
 		volcano6i-audio-idp-wcd9395-ganges.dtbo \
 		volcano6i-audio-idp-wcd9395-brahma.dtbo \
 		volcano6i-audio-mtp-wcd9395-ganges.dtbo \
