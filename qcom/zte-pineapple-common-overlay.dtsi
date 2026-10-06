@@ -1,3 +1,4 @@
+#include <dt-bindings/input/gpio-keys.h>
 #include <dt-bindings/input/input.h>
 
 &soc {
@@ -428,22 +429,24 @@
 		compatible = "gpio-keys";
 		label = "gpio-keys_nubia";
 
-		game_sw_on {
-			label = "game_sw_on";
-			linux,input-type = <EV_KEY>;
-			linux,code = <KEY_GREEN>;
-			debounce-interval = <30>;
-			gpio-key,wakeup;
-			oneshot;
-		};
-
 		game_sw_off {
 			label = "game_sw_off";
-			linux,input-type = <EV_KEY>;
-			linux,code = <KEY_RED>;
+			linux,input-type = <EV_ABS>;
+			linux,code = <ABS_MISC>;
+			linux,input-value = <0>;
 			debounce-interval = <30>;
-			gpio-key,wakeup;
-			oneshot;
+			wakeup-source;
+			wakeup-event-action = <EV_ACT_ASSERTED>;
+		};
+
+		game_sw_on {
+			label = "game_sw_on";
+			linux,input-type = <EV_ABS>;
+			linux,code = <ABS_MISC>;
+			linux,input-value = <1>;
+			debounce-interval = <30>;
+			wakeup-source;
+			wakeup-event-action = <EV_ACT_ASSERTED>;
 		};
 	};
 
